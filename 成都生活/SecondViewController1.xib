@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondViewController1">
+            <connections>
+                <outlet property="scrollView" destination="WGL-tS-3z6" id="lVn-c1-GI8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="theplace_coffee_detail.png" translatesAutoresizingMaskIntoConstraints="NO" id="aFE-Xu-8N3">
+                    <rect key="frame" x="0.0" y="75" width="375" height="280"/>
+                </imageView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WGL-tS-3z6">
+                    <rect key="frame" x="0.0" y="356" width="375" height="311"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PV-Zd-9w3">
+                            <rect key="frame" x="8" y="0.0" width="375" height="450"/>
+                            <mutableString key="text">
+the place
+ 
+毕业一年多的时间里 
+为着梦想一直奋斗，坚持 
+初始，在星巴克工作半年 
+偶然一个机会 
+与合伙人决定开一间小小咖啡馆 
+就这样The Place渐渐的成形了 
+
+不知不觉中，The Place已经试运营三个月了 
+只希望趁这个小小的机会 
+感谢这一路走来朋友们的支持 
+给予The Place的认可及建议 
+
+每次看见朋友们 
+将The Place分享给身边的朋友 
+带着爱的眼光欣赏着The Place里的每一样东西 
+懂得我们的用心 
+为我们的用心而感动时 
+我们更感动 
+
+同时我们也发现 
+朋友们比我们更能发现The Place的美 
+下面分享一些朋友们的分享给大家 
+
+再次感谢 
+每一位到访过The Place的朋友 
+---- 小佳 </mutableString>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="theplace_coffee_detail.png" width="800" height="492"/>
+    </resources>
+</document>

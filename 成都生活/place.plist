@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>images</key>
+		<string>首页1.png</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>首页2.png</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>首页3.png</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>杜甫草堂.jpg</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>欢乐谷.jpg</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>锦里.jpg</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>宽窄巷子.jpg</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>熊猫基地.jpg</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+	<dict>
+		<key>images</key>
+		<string>武侯祠.jpg</string>
+		<key>detailLabels</key>
+		<string>1234567</string>
+	</dict>
+</array>
+</plist>
