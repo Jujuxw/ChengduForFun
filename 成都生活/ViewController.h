@@ -17,6 +17,9 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) UITextField *nameField;
+@property (nonatomic, strong) UITextField *passwordField;
+@property (nonatomic, strong) NSMutableArray *userArray;
 
 //- (void)GetName: (GetTextBlock)block1 getPassword:(GetTextBlock)block2;
 

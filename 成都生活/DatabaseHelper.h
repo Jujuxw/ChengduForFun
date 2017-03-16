@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <sqlite3.h>
+#import "DBAccess.h"
+#import "User.h"
 
 @interface DatabaseHelper : NSObject
 
++ (BOOL)insertUser:(User *)user;
++ (NSMutableArray *)getAllUsers;
 @end

@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <sqlite3.h>
+#import "User.h"
 @interface DBAccess : NSObject
 
+//- (NSMutableArray *)getAllUsers;
++ (void)closeDatabase;
++ (sqlite3 *)initializeDatabase;
+//- (void)createEditableDatabase:(int)phoneNumber name:(NSString *)name password:(NSString *)password;
+//- (void)insertDatabase:(int)phoneNumber name:(NSString *)name password:(NSString *)password;
 @end

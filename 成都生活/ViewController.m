@@ -11,11 +11,17 @@
 #import "SecondViewController.h"
 #import "ThirdViewController.h"
 #import "ForthViewController.h"
+#import "RegisterController.h"
+#import "DatabaseHelper.h"
+#import "User.h"
+
 @interface ViewController ()
 
 @end
 
 @implementation ViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,30 +32,30 @@
     logoImageView.image = [UIImage imageNamed:@"logo3"];
     [self.view addSubview:logoImageView];
     //如何操作键盘
-    UITextField *text = [[UITextField alloc]initWithFrame:CGRectMake(26, 316, 332, 41)];
-    text.placeholder = @"请输入账号";
-    text.borderStyle = UITextBorderStyleRoundedRect;
-    text.keyboardType = UIKeyboardTypeDefault;//键盘类型
-    text.returnKeyType = UIReturnKeyDone;//返回键是done
+    _nameField = [[UITextField alloc]initWithFrame:CGRectMake(26, 316, 332, 41)];
+    _nameField.placeholder = @"请输入账号";
+    _nameField.borderStyle = UITextBorderStyleRoundedRect;
+    _nameField.keyboardType = UIKeyboardTypeDefault;//键盘类型
+    _nameField.returnKeyType = UIReturnKeyDone;//返回键是done
     //全部删除，自动删除
-    text.clearButtonMode = UITextFieldViewModeWhileEditing;//编辑时出现删除键
-    text.clearsOnBeginEditing = YES;//开始编辑时清空
+    _nameField.clearButtonMode = UITextFieldViewModeWhileEditing;//编辑时出现删除键
+    _nameField.clearsOnBeginEditing = YES;//开始编辑时清空
     //text.secureTextEntry = YES;//密文输入
-    text.delegate = self;//让下一级别的对象知道上一层／／将键盘的回调事件交给self
+    _nameField.delegate = self;//让下一级别的对象知道上一层／／将键盘的回调事件交给self
     //给text增加一个tag值
-    text.tag = 100;
-    [self.view addSubview:text];
+    _nameField.tag = 100;
+    [self.view addSubview:_nameField];
     
-    UITextField *password = [[UITextField alloc]initWithFrame:CGRectMake(26, 372, 332, 41)];
-    password.placeholder = @"请输入密码";
-    password.borderStyle = UITextBorderStyleRoundedRect;
-    password.tag = 200;
-    password.secureTextEntry = YES;
-    [self.view addSubview:password];
+    _passwordField = [[UITextField alloc]initWithFrame:CGRectMake(26, 372, 332, 41)];
+    _passwordField.placeholder = @"请输入密码";
+    _passwordField.borderStyle = UITextBorderStyleRoundedRect;
+    _passwordField.tag = 200;
+    _passwordField.secureTextEntry = YES;
+    [self.view addSubview:_passwordField];
     //按钮登陆
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setBackgroundColor:[UIColor colorWithRed:154/255.0 green:37/255.0 blue:21/255.0 alpha:1]];
-    button.frame = CGRectMake(26, 440, 330, 47) ;
+    button.frame = CGRectMake(26, 440, 150, 47) ;
     [button setTitle:@"登陆" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(toLogin) forControlEvents:UIControlEventTouchUpInside];
     //button的圆角
@@ -57,10 +63,25 @@
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];//在点击未放的过程中
     //*********按钮添加事件*********
     [self.view addSubview:button];
-    // Do any additional setup after loading the view, typically from a nib.
     
+    UIButton *registerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [registerButton setBackgroundColor:[UIColor colorWithRed:154/255.0 green:37/255.0 blue:21/255.0 alpha:1]];
+    registerButton.frame = CGRectMake(180, 440, 150, 47) ;
+    [registerButton setTitle:@"注册" forState:UIControlStateNormal];
+    [registerButton addTarget:self action:@selector(registerUser) forControlEvents:UIControlEventTouchUpInside];
+    registerButton.layer.cornerRadius = 7;
+    [registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.view addSubview:registerButton];
     
 }
+
+/**********注册账号信息**************/
+- (void)registerUser {
+    
+    RegisterController *registerController = [[RegisterController alloc] init];
+    [self presentViewController:registerController animated:YES completion:nil];
+}
+
 /**********键盘弹出或消失，视图上移和下移的位置必须固定**************/
 //开始输入时，视图上移
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -77,44 +98,66 @@
     return YES;
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    UITextField *field = (UITextField *)[self.view viewWithTag:100];
-    [field resignFirstResponder];
-    UITextField *field2 = (UITextField *)[self.view viewWithTag:200];
-    [field2 resignFirstResponder];
+//    UITextField *field = (UITextField *)[self.view viewWithTag:100];
+    [_nameField resignFirstResponder];
+//    UITextField *field2 = (UITextField *)[self.view viewWithTag:200];
+    [_passwordField resignFirstResponder];
     self.view.center = [UIApplication sharedApplication].keyWindow.center;
 }
+
 - (void)toLogin
 {
-    //输出用户的输入账号密码
-    //判定是否等于admin 和123456
     //如果等于，输出登陆成功
-        NSLog(@"%@",NSHomeDirectory());
-    self.name = [(UITextField *)[self.view viewWithTag:100] text];
-    self.password = [(UITextField  *)[self.view viewWithTag:200]  text];
+    NSLog(@"%@",NSHomeDirectory());
+//    UITextField *passwordField = (UITextField  *)[self.view viewWithTag:200];
+    
+//    self.name = [(UITextField *)[self.view viewWithTag:100] text];
+//    self.password = passwordField.text;
+    
+    User *user = [[User alloc] init];
+    self.userArray = [DatabaseHelper getAllUsers];
+    self.name = self.nameField.text;
+    self.password = self.passwordField.text;
+    
+    for (int i = 0; i < [self.userArray count]; i++) {
+        user = self.userArray[i];
+        
+        if ( [self.name isEqualToString:user.name] && [self.password isEqualToString:user.password] )
+        {
+            //tabBar
+            FirstViewController *fvc = [[FirstViewController alloc]init];
+            id obj1 = [self setTabBarInfoWithVC:fvc imageName:@"icon_menu_hp_press" slectedName:@"icon_menu_hp_selected"title:@"热门推荐"];
+            SecondViewController *svc = [[SecondViewController alloc]init];
+            id obj2 = [self setTabBarInfoWithVC:svc imageName:@"icon_menu_x_press" slectedName:@"icon_menu_x_selected" title:@"专线航程"];
+            ThirdViewController *thc = [[ThirdViewController alloc]init];
+            id obj3 = [self setTabBarInfoWithVC:thc imageName:@"icon_menu_ihave_press" slectedName:@"icon_menu_ihave_selected" title:@"游记攻略"];
+            ForthViewController *fvc2 = [[ForthViewController alloc]init];
+            id obj4 = [self setTabBarInfoWithVC:fvc2 imageName:@"icon_menu_profile_press" slectedName:@"icon_menu_profile_selected" title:@"我"];
+            UITabBarController *tab = [[UITabBarController alloc]init];
+            tab.viewControllers = @[obj1,obj2,obj3,obj4];
+            tab.tabBar.barTintColor = back_color;
+            tab.tabBar.tintColor = [UIColor whiteColor];
+            [self presentViewController:tab animated:YES completion:nil];
+            
+            
+        } else if (![self.password isEqualToString:@"123456"]) {
+            
+            CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+            animation.keyPath = @"position.x";
+            animation.values = @[@0, @10, @-10, @10, @0];
+            animation.keyTimes = @[@0, @(1/6.0), @(3/6.0), @(5/6.0), @1];
+            animation.duration = 0.4;
+            animation.additive = YES;
+            [_passwordField.layer addAnimation:animation forKey:@"shake"];
+            
+        }
+    }
 
-    if ( [self.name isEqualToString:@"admin"] && [self.password isEqualToString:@"123456"] )
-    {
-        //tabBar
-        FirstViewController *fvc = [[FirstViewController alloc]init];
-        id obj1 = [self setTabBarInfoWithVC:fvc imageName:@"icon_menu_hp_press" slectedName:@"icon_menu_hp_selected"title:@"热门推荐"];
-        SecondViewController *svc = [[SecondViewController alloc]init];
-        id obj2 = [self setTabBarInfoWithVC:svc imageName:@"icon_menu_x_press" slectedName:@"icon_menu_x_selected" title:@"专线航程"];
-        ThirdViewController *thc = [[ThirdViewController alloc]init];
-        id obj3 = [self setTabBarInfoWithVC:thc imageName:@"icon_menu_ihave_press" slectedName:@"icon_menu_ihave_selected" title:@"游记攻略"];
-        ForthViewController *fvc2 = [[ForthViewController alloc]init];
-        id obj4 = [self setTabBarInfoWithVC:fvc2 imageName:@"icon_menu_profile_press" slectedName:@"icon_menu_profile_selected" title:@"我"];
-        UITabBarController *tab = [[UITabBarController alloc]init];
-        tab.viewControllers = @[obj1,obj2,obj3,obj4];
-        tab.tabBar.barTintColor = back_color;
-        tab.tabBar.tintColor = [UIColor whiteColor];
-        [self presentViewController:tab animated:YES completion:nil];
     
-    
-    }
-    else{
-               UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请输入用户名和密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alertView show];
-    }
+//    else{
+//               UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请输入用户名和密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//                [alertView show];
+//    }
 }
 - (id)setTabBarInfoWithVC:
 (UIViewController *)vc imageName:

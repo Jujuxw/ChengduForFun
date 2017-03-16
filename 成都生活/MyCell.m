@@ -13,6 +13,7 @@
 - (void)awakeFromNib {
     // Initialization code
     //添加图片和文本的适应处理
+    [super awakeFromNib];
     self.adressLabel.numberOfLines = 0;
     self.pictureLabel.layer.shadowColor = [UIColor blackColor].CGColor;//设置阴影颜色
     self.pictureLabel.layer.shadowOffset = CGSizeMake(3, 3);

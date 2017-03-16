@@ -10,4 +10,8 @@
 
 @implementation User
 
+@synthesize phoneNumber;
+@synthesize name;
+@synthesize password;
+
 @end
