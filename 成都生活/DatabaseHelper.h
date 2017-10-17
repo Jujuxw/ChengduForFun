@@ -15,4 +15,5 @@
 
 + (BOOL)insertUser:(User *)user;
 + (NSMutableArray *)getAllUsers;
+
 @end

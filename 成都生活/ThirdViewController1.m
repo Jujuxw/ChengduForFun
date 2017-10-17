@@ -35,8 +35,6 @@
     [self.view addSubview:self.nextbackLabel];
     [self.view addSubview:self.nextView];
     [self.view addSubview:self.nextTextLabel];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

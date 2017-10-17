@@ -12,27 +12,30 @@
 #import "SecondViewController3.h"
 #import "SecondViewController4.h"
 #import "SecondViewController5.h"
+
 @interface SecondViewController ()
-@property (strong,nonatomic)NSMutableArray *array;
-@property (strong,nonatomic)UIButton *button;
-@property (strong,nonatomic)UILabel *TagLabel;
+
+@property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) UILabel *TagLabel;
+
 @end
 
 @implementation SecondViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     self.tabBarController.tabBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = NO;
     self.titleLabel.text = @"专线航程";
     _array = [NSMutableArray array];
     _TagLabel = [[UILabel alloc]init];
-    for(int i=0;i<5;i++){
-            _button = [[UIButton alloc]initWithFrame:CGRectMake(15 + 120*(i%3), 90+110*(i/3), 100, 100)];
-            [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:(@"icon%d.png"),i+1]] forState:UIControlStateNormal];
-            [_array addObject:_button];
+    for(int i=0;i<5;i++) {
+        _button = [[UIButton alloc]initWithFrame:CGRectMake(15 + 120*(i%3), 90+110*(i/3), 100, 100)];
+        [_button setImage:[UIImage imageNamed:[NSString stringWithFormat:(@"icon%d.png"),i+1]] forState:UIControlStateNormal];
+        [_array addObject:_button];
         _button.tag = i+1;
-            [self.view addSubview:_button];
-            [_button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchDown];
+        [self.view addSubview:_button];
+        [_button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchDown];
         
     }
 //    for (int i=0; i < 5; i++) {
@@ -40,28 +43,28 @@
 //    }
     // Do any additional setup after loading the view.
 }
--(void)click:(UIButton *)button{
+
+- (void)click:(UIButton *)button {
     if (button.tag == 1) {
         SecondViewController1 *svc1 = [[SecondViewController1 alloc]init];
         [self presentViewController:svc1 animated:YES completion:nil];
         self.tabBarController.tabBar.hidden = NO;
-    }else if (button.tag == 2){
+    } else if (button.tag == 2) {
         SecondViewController2 *svc2 = [[SecondViewController2 alloc]init];
         [self presentViewController:svc2 animated:YES completion:nil];
-    }else if (button.tag ==3){
+    } else if (button.tag == 3) {
         SecondViewController3 *svc3 = [[SecondViewController3 alloc]init];
-    
         [self presentViewController:svc3 animated:YES completion:nil];
-    }else if (button.tag ==4){
+    } else if (button.tag == 4)  {
         SecondViewController4 *svc4 = [[SecondViewController4 alloc]init];
         [self presentViewController:svc4 animated:YES completion:nil];
-    }else if (button.tag ==5){
+    } else if (button.tag == 5) {
         SecondViewController5 *svc5 = [[SecondViewController5 alloc]init];
         [self presentViewController:svc5 animated:YES completion:nil];
     }
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

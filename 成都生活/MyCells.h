@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MyCells : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageViewLabel;
 
 @property (strong, nonatomic) IBOutlet UILabel *detailLabel;

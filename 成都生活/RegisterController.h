@@ -12,21 +12,20 @@
 
 @interface RegisterController : UIViewController
 
-@property (strong, nonatomic) UITextField *userName;
-@property (strong, nonatomic) UITextField *password;
-@property (strong, nonatomic) UITextField *phoneNumber;
-@property (strong, nonatomic) UITextField *checkNumber;
+@property (nonatomic, strong) UITextField *userNameField;
+@property (nonatomic, strong) UITextField *passwordField;
+@property (nonatomic, strong) UITextField *phoneNumberField;
+@property (nonatomic, strong) UITextField *checkNumberField;
 
-@property (strong, nonatomic) UILabel *nameLabel;
-@property (strong, nonatomic) UILabel *passwordLabel;
-@property (strong, nonatomic) UILabel *phoneLabel;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *passwordLabel;
+@property (nonatomic, strong) UILabel *phoneLabel;
 
-@property (strong, nonatomic) UIButton *checkBtn;
-@property (strong, nonatomic) UIButton *RegisterBtn;
-@property (strong, nonatomic) UIButton *backBtn;
+@property (nonatomic, strong) UIButton *checkBtn;
+@property (nonatomic, strong) UIButton *registerBtn;
 
-@property (strong, nonatomic) NSTimer *codeNimer;
-@property (assign, nonatomic) NSInteger codeNumber;
+@property (nonatomic, strong) NSTimer *codeTimer;
+@property (nonatomic, assign) NSInteger codeNumber;
 
-@property (strong, nonatomic) NSMutableArray *userArray;
+@property (nonatomic, strong) NSMutableArray *userArray;
 @end

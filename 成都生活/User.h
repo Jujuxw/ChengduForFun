@@ -10,8 +10,8 @@
 
 @interface User : NSObject
 
-@property (strong, nonatomic) NSString *phoneNumber;
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *password;
+@property (nonatomic, strong) NSString *phoneNumber;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *password;
 
 @end

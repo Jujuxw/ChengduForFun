@@ -7,19 +7,19 @@
 //
 
 #import "FirstViewController.h"
-#import "Mycells.h"
+#import "MyCells.h"
 
-#define imageCount 7
-#define scrollViewSize (self.scrollView.frame.size)
+#define KImageCount 7
+#define KScrollViewSize (self.scrollView.frame.size)
 
-@interface FirstViewController ()<UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate>
+@interface FirstViewController ()<UITableViewDataSource, UITableViewDelegate,  UIScrollViewDelegate>
 
-@property (strong,nonatomic) UITableView *tableView;
-@property (strong,nonatomic) NSMutableArray *infos;
-@property (strong,nonatomic) NSMutableArray *array;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *infos;
+@property (nonatomic, strong) NSMutableArray *array;
 
-@property (weak,nonatomic) UIPageControl *pageControl;
-@property (weak,nonatomic) NSTimer *timer;
+@property (nonatomic, weak) UIPageControl *pageControl;
+@property (nonatomic, weak) NSTimer *timer;
 @end
 
 @implementation FirstViewController
@@ -40,26 +40,26 @@
 {
     [super viewWillAppear:YES];
 //    _scrollView.backgroundColor = [UIColor greenColor];
-    _scrollView.frame = CGRectMake(0, 75, scrollViewSize.width, 250);
+    _scrollView.frame = CGRectMake(0, 75, KScrollViewSize.width, 250);
     [self.view addSubview:_scrollView];
 }
 //加载轮播图片
 - (void)loadScrollView {
     
     NSArray *arrays = [[NSArray alloc] init];
-    arrays = @[@"首页1.png",@"首页2.png",@"首页3.png",@"杜甫草堂.jpg",@"欢乐谷.jpg",@"锦里.jpg",@"武侯祠.jpg"];
+    arrays = @[@"frontpage1",@"frontpage2",@"frontpage3",@"dufucaotang",@"huanlegu",@"jinli",@"wuhouci"];
     
-    for (int i = 0; i < imageCount; i++) {
-        CGFloat imageViewX = scrollViewSize.width * i;
+    for (int i = 0; i < KImageCount; i++) {
+        CGFloat imageViewX = KScrollViewSize.width * i;
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewX, 0, scrollViewSize.width, scrollViewSize.height)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewX, 0, KScrollViewSize.width, KScrollViewSize.height)];
         
         imageView.image = [UIImage imageNamed:arrays[i]];
         
         [self.scrollView addSubview:imageView];
     }
     
-    CGFloat imageViewW = imageCount * scrollViewSize.width;
+    CGFloat imageViewW = KImageCount * KScrollViewSize.width;
     
     self.scrollView.contentSize = CGSizeMake(imageViewW, 0);
     
@@ -70,7 +70,7 @@
 }
 //加载页码
 - (void)loadPageControl {
-    self.pageControl.numberOfPages = imageCount;
+    self.pageControl.numberOfPages = KImageCount;
     self.pageControl.currentPage = 0;
     self.pageControl.currentPageIndicatorTintColor = [UIColor redColor];
     self.pageControl.pageIndicatorTintColor = [UIColor grayColor];
@@ -89,7 +89,7 @@
     
     CGPoint offset = self.scrollView.contentOffset;
     
-    if (offset.x >= scrollViewSize.width * (imageCount - 1)) {
+    if (offset.x >= KScrollViewSize.width * (KImageCount - 1)) {
         
         currentPage = 0;
         
@@ -99,7 +99,7 @@
     }else {
         currentPage ++;
         
-        offset.x += scrollViewSize.width;
+        offset.x += KScrollViewSize.width;
     }
     
     self.pageControl.currentPage = currentPage;
@@ -110,7 +110,7 @@
 //根据偏移量获取当前页码
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGPoint offset = scrollView.contentOffset;
-    NSInteger currentPage = offset.x / scrollViewSize.width;
+    NSInteger currentPage = offset.x / KScrollViewSize.width;
     self.pageControl.currentPage = currentPage;
 }
 
@@ -124,8 +124,7 @@
     [self loadTimer];
 }
 
--(UITableView *)tableView
-{
+- (UITableView *)tableView {
     _infos = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"place.plist"]];
     
     if(!_tableView){
@@ -145,13 +144,11 @@
 }
 
 #pragma mark -tableView delegate
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _infos.count;
 }
 
--(MyCells *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (MyCells *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identify = @"cell";//cell重识标识
     MyCells *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
@@ -163,12 +160,12 @@
     
     return cell;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 250;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //    if (indexPath.row == 0) {
     //        tvc1.nextView.image = [UIImage imageNamed:arrayInfo[@"images"]];

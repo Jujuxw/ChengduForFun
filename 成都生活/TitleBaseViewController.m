@@ -8,7 +8,7 @@
 
 #import "TitleBaseViewController.h"
 #import "SecondViewController.h"
-#define back_color [UIColor colorWithRed:154/255.0 green:37/255.0 blue:21/255.0 alpha:1]
+#define KBackgroundColor [UIColor colorWithRed:154/255.0 green:37/255.0 blue:21/255.0 alpha:1]
 @interface TitleBaseViewController ()
 
 @end
@@ -21,7 +21,7 @@
     //导航
     _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 375, 75)];
     self.view.userInteractionEnabled= YES;
-    _imageView.backgroundColor = back_color;
+    _imageView.backgroundColor = KBackgroundColor;
     [self.view addSubview:_imageView];
     //控件属性初始化
     _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, 375, 60)];
@@ -32,7 +32,7 @@
     [self.view addSubview:_titleLabel];
     //返回控件
     _backButton = [[UIButton alloc ]initWithFrame:CGRectMake(5, 50, 30, 20)];
-    [_backButton setImage:[UIImage imageNamed:@"返回箭头.png"] forState:UIControlStateNormal];
+    [_backButton setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
     [self.view addSubview:_backButton];
     [_backButton addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchDown];
     _backButton.hidden = YES;

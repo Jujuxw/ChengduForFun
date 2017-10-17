@@ -1,0 +1,26 @@
+//
+//  JPrefixHeader.pch
+//  成都生活
+//
+//  Created by Juju on 17/10/2017.
+//  Copyright © 2017 刘晓微. All rights reserved.
+//
+
+#ifndef JPrefixHeader_pch
+#define JPrefixHeader_pch
+
+#import "Masonry.h"
+
+#define JRGB(r, g, b) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
+#define JButtonColor JRGB(154.0f, 37.0f, 21.0f)
+
+#define JDefaultRadius (7)
+#define JDefaultMargin (25)
+#define JMediumMargin (50)
+#define JDefaultSize (40)
+#define JDefaultScreenSize [UIScreen mainScreen].bounds.size
+#define JDefaultScreenWidth [UIScreen mainScreen].bounds.size.width
+#define JDefaultScreenHeight [UIScreen mainScreen].bounds.size.height
+#define JFont(A) [UIFont systemFontOfSize:A]
+
+#endif /* JPrefixHeader_pch */

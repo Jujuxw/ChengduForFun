@@ -19,11 +19,12 @@
     self.backButton.hidden = NO;
     // Do any additional setup after loading the view from its nib.
 }
--(void)viewDidAppear:(BOOL)animated
-{
+
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:YES];
     _scrollView.contentSize = CGSizeMake(375, 500);
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TitleBaseViewController.h"
 @interface SecondViewController1 : TitleBaseViewController
+
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

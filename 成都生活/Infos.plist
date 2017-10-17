@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>picture</key>
-		<string>宽窄巷子.jpg</string>
+		<string>kuanzaixiangzi.png</string>
 		<key>name</key>
 		<string>宽窄巷子</string>
 		<key>phone</key>
@@ -14,7 +14,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>杜甫草堂.jpg</string>
+		<string>dufucaotang.png</string>
 		<key>name</key>
 		<string>杜甫草堂</string>
 		<key>phone</key>
@@ -24,7 +24,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>欢乐谷.jpg</string>
+		<string>huanlegu.png</string>
 		<key>name</key>
 		<string>欢乐谷</string>
 		<key>phone</key>
@@ -34,7 +34,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>武侯祠.jpg</string>
+		<string>wuhouci.png</string>
 		<key>name</key>
 		<string>武侯祠</string>
 		<key>phone</key>
@@ -44,7 +44,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>熊猫基地.jpg</string>
+		<string>xiongmao.png</string>
 		<key>name</key>
 		<string>熊猫基地</string>
 		<key>phone</key>
@@ -54,7 +54,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>锦里.jpg</string>
+		<string>jinli.png</string>
 		<key>name</key>
 		<string>锦里</string>
 		<key>phone</key>

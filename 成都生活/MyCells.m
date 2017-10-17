@@ -10,20 +10,30 @@
 
 @implementation MyCells
 
-- (void)awakeFromNib {
-    // Initialization code
-    [super awakeFromNib];
-    
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+        [self setupUI];
+    }
+    return self;
+}
+
+- (void)setupUI {
     self.imageViewLabel.layer.shadowColor = [UIColor blackColor].CGColor;
     self.imageViewLabel.layer.shadowOffset = CGSizeMake(3, 3);
     self.imageViewLabel.layer.shadowOpacity = 0.5;
     self.imageViewLabel.layer.cornerRadius = 10;
     self.imageViewLabel.layer.masksToBounds = YES;
     
-    self.detailLabel.font = [UIFont systemFontOfSize:15];
+    self.detailLabel.font = JFont(15);
     self.detailLabel.textColor = [UIColor blackColor];
     self.detailLabel.textAlignment = NSTextAlignmentCenter;
     self.detailLabel.numberOfLines = 0;
+}
+
+- (void)awakeFromNib {
+    // Initialization code
+    [super awakeFromNib];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

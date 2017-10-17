@@ -15,14 +15,11 @@
 //@property (strong, nonatomic) IBOutlet UILabel *userPassword;
 
 @property (strong, nonatomic) IBOutlet UISwitch *mSwitch;
-
 @property (weak, nonatomic) IBOutlet UISlider *slider;
-
 @property(strong,nonatomic) AVAudioPlayer *player;
 
 - (IBAction)switchChanged:(id)sender;
-
 - (IBAction)sliderChanged:(id)sender;
-
 - (void)startMusic;
+
 @end

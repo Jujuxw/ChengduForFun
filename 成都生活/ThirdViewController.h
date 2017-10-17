@@ -10,7 +10,9 @@
 #import "TitleBaseViewController.h"
 #import "ThirdViewController1.h"
 @interface ThirdViewController : TitleBaseViewController
-@property (strong,nonatomic)UILabel *nextbackLabel;
-@property (strong,nonatomic)UIImageView *nextView;
-@property (strong,nonatomic)UILabel *nextTextLabel;
+
+@property (nonatomic, strong) UILabel *nextbackLabel;
+@property (nonatomic, strong) UIImageView *nextView;
+@property (nonatomic, strong) UILabel *nextTextLabel;
+
 @end

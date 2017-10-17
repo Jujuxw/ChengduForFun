@@ -9,10 +9,11 @@
 #import "ThirdViewController.h"
 #import "MyCell.h"
 #import "ThirdViewController1.h"
-@interface ThirdViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (strong,nonatomic)UITableView *tableView;
-@property (strong,nonatomic)NSMutableArray *infos;
-@property (strong,nonatomic)NSMutableArray *array;
+@interface ThirdViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *infos;
+@property (nonatomic, strong) NSMutableArray *array;
 
 @end
 
@@ -22,16 +23,14 @@
     [super viewDidLoad];
     self.titleLabel.text = @"游记攻略";//标题栏
     [self.view addSubview:self.tableView];//添加到视图上
-    
 }
 
--(UITableView *)tableView
-{
+- (UITableView *)tableView {
     _infos = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"Infos.plist"]];
     _array = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"third.plist"]];
     
 //    NSLog(@"123==%d,",_infos.count);
-    if(!_tableView){
+    if(!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:
                       CGRectMake(0, 75, 375, 667-75-49) style:UITableViewStylePlain];
         _tableView.delegate = self;
@@ -41,14 +40,13 @@
     }
     return _tableView;
 }
+
 #pragma mark -tableView delegate
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _infos.count;
 }
 
--(MyCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (MyCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identify = @"cell";//cell重识标识
     MyCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
@@ -63,12 +61,12 @@
     cell.adressLabel.numberOfLines = 2;
     return cell;
 }
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 120;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ThirdViewController1 *tvc1 = [[ThirdViewController1 alloc]init];
     [self presentViewController:tvc1 animated:YES completion:nil];
     NSDictionary *arrayInfo = _array[indexPath.row];

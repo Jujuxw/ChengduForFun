@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TitleBaseViewController : UIViewController
-@property (strong,nonatomic)UILabel *titleLabel;
-@property (strong,nonatomic)UIImageView *imageView;
-@property (strong,nonatomic)UIButton *backButton;
-@property (strong,nonatomic)UISwipeGestureRecognizer *recognizer;
+
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIButton *backButton;
+@property (nonatomic, strong) UISwipeGestureRecognizer *recognizer;
 
 @end

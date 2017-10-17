@@ -19,6 +19,7 @@
     self.pictureLabel.layer.shadowOffset = CGSizeMake(3, 3);
     self.pictureLabel.layer.shadowOpacity = 0.5;
 }
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

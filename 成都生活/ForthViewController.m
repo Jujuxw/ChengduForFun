@@ -12,8 +12,7 @@
 
 @end
 
-@implementation ForthViewController
-{
+@implementation ForthViewController {
     ViewController *vc;
 }
 - (void)viewDidLoad {
@@ -50,20 +49,16 @@
 
 - (IBAction)switchChanged:(id)sender {
     if ([_mSwitch isOn] == YES) {
-        
         _slider.enabled = YES;
         [_slider addTarget:self action:@selector(sliderChanged:) forControlEvents:UIControlEventValueChanged];
         [self startMusic];
-        
     }else {
         [self.player pause];
-        
         _slider.enabled = NO;
     }
 }
 
 - (void)startMusic {
-    
     NSString *fileName = [[NSBundle mainBundle] pathForResource:@"A Little Love" ofType:@"mp3"];
     NSURL *url = [NSURL fileURLWithPath:fileName];
     NSError *err = nil;
@@ -72,7 +67,6 @@
     if (!_player) {
         NSLog(@"播放失败");
     }else {
-        
         if ([_mSwitch isOn] == YES) {
             _player.numberOfLoops = -1;
             [_player prepareToPlay];
