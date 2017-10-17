@@ -8,7 +8,7 @@
 
 #import "TitleBaseViewController.h"
 #import "SecondViewController.h"
-#define KBackgroundColor [UIColor colorWithRed:154/255.0 green:37/255.0 blue:21/255.0 alpha:1]
+
 @interface TitleBaseViewController ()
 
 @end
@@ -19,23 +19,17 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     //导航
-    _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 375, 75)];
+    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 375, 75)];
     self.view.userInteractionEnabled= YES;
-    _imageView.backgroundColor = KBackgroundColor;
+    _imageView.backgroundColor = JButtonColor;
     [self.view addSubview:_imageView];
     //控件属性初始化
-    _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, 375, 60)];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 15, 375, 60)];
     _titleLabel.textAlignment = NSTextAlignmentCenter;
     _titleLabel.text = @"详情";
     _titleLabel.textColor = [UIColor whiteColor];
-    _titleLabel.font = [UIFont boldSystemFontOfSize:22];
+    _titleLabel.font = JMediumFont(22.0f);
     [self.view addSubview:_titleLabel];
-    //返回控件
-    _backButton = [[UIButton alloc ]initWithFrame:CGRectMake(5, 50, 30, 20)];
-    [_backButton setImage:[UIImage imageNamed:@"return"] forState:UIControlStateNormal];
-    [self.view addSubview:_backButton];
-    [_backButton addTarget:self action:@selector(click) forControlEvents:UIControlEventTouchDown];
-    _backButton.hidden = YES;
     //轻扫手势，翻页
     // handleSwipeFrom 是偵測到手势，所要呼叫的方法
     _recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeFrom)];
@@ -44,27 +38,14 @@
     
 }
 
--(void)handleSwipeFrom
-{
+-(void)handleSwipeFrom {
     if (self.recognizer.direction == UISwipeGestureRecognizerDirectionLeft) {
-        self.tabBarController.selectedIndex = self.tabBarController.selectedIndex+1;
+        self.tabBarController.selectedIndex += 1;
+    } else if (self.recognizer.direction == UISwipeGestureRecognizerDirectionRight) {
+        self.tabBarController.selectedIndex -= 1;
     }
 }
--(void)click
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-//    if (button.tag ==1) {
-//        [self.navigationController pushViewController:<#(UIViewController *)#> animated:YES];
-//    }else if (button.tag == 2){
-//        [self.navigationController pushViewController:<#(UIViewController *)#> animated:YES];
-//    }else if (button.tag ==3){
-//        [self.navigationController pushViewController:(UIViewController *) animated:YES];
-//    }else if (button.tag == 4){
-//        [self.navigationController pushViewController:<#(UIViewController *)#> animated:YES];
-//    }else if (button.tag ==5){
-//        [self.navigationController pushViewController:<#(UIViewController *)#> animated:YES];
-//    }
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

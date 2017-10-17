@@ -4,55 +4,55 @@
 <array>
 	<dict>
 		<key>images</key>
-		<string>首页1.png</string>
+		<string>frontpage1</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>首页2.png</string>
+		<string>frontpage2</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>首页3.png</string>
+		<string>frontpage3</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>杜甫草堂.jpg</string>
+		<string>dufucaotang</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>欢乐谷.jpg</string>
+		<string>huanlegu</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>锦里.jpg</string>
+		<string>jinli.png</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>宽窄巷子.jpg</string>
+		<string>kuanzaixiangzi</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>熊猫基地.jpg</string>
+		<string>xiongmao</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>
 	<dict>
 		<key>images</key>
-		<string>武侯祠.jpg</string>
+		<string>wuhouci</string>
 		<key>detailLabels</key>
 		<string>1234567</string>
 	</dict>

@@ -23,8 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.backButton];
-    self.backButton.hidden = NO;
     
     _nextbackLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 75, 375, 305)];
     self.nextbackLabel.backgroundColor = [UIColor blackColor];

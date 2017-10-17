@@ -34,11 +34,12 @@
 }
 
 - (void)setupNavBar {
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBarHidden = NO;
     self.title = @"注册";
 }
 
 - (void)setupUI {
+    [self setupNavBar];
     self.nameLabel = [[UILabel alloc] init];
     self.nameLabel.backgroundColor = JButtonColor;
     self.nameLabel.text = @"用户名";
@@ -127,7 +128,7 @@
     [self.checkBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(JDefaultMargin);
         make.top.equalTo(self.phoneLabel.mas_bottom).offset(15);
-        make.size.mas_equalTo(CGSizeMake(100, JDefaultSize));
+        make.height.mas_equalTo(JDefaultSize);
     }];
     
     self.checkNumberField = [[UITextField alloc] init];

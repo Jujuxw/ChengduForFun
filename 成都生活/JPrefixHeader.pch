@@ -22,5 +22,6 @@
 #define JDefaultScreenWidth [UIScreen mainScreen].bounds.size.width
 #define JDefaultScreenHeight [UIScreen mainScreen].bounds.size.height
 #define JFont(A) [UIFont systemFontOfSize:A]
+#define JMediumFont(A) [UIFont boldSystemFontOfSize:A]
 
 #endif /* JPrefixHeader_pch */

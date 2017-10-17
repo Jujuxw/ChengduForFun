@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.backButton.hidden = NO;
     // Do any additional setup after loading the view from its nib.
 }
 

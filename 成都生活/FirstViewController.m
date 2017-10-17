@@ -10,9 +10,8 @@
 #import "MyCells.h"
 
 #define KImageCount 7
-#define KScrollViewSize (self.scrollView.frame.size)
 
-@interface FirstViewController ()<UITableViewDataSource, UITableViewDelegate,  UIScrollViewDelegate>
+@interface FirstViewController ()<UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *infos;
@@ -28,8 +27,6 @@
     [super viewDidLoad];
     //标题
     self.titleLabel.text = @"首页";
-//    [self addFirstScroView];
-    [self.view addSubview:self.tableView];
     
     [self loadScrollView];
     [self loadPageControl];
@@ -39,8 +36,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-//    _scrollView.backgroundColor = [UIColor greenColor];
-    _scrollView.frame = CGRectMake(0, 75, KScrollViewSize.width, 250);
+    _scrollView.frame = CGRectMake(0, 75, JDefaultScreenWidth, 200);
     [self.view addSubview:_scrollView];
 }
 //加载轮播图片
@@ -50,16 +46,16 @@
     arrays = @[@"frontpage1",@"frontpage2",@"frontpage3",@"dufucaotang",@"huanlegu",@"jinli",@"wuhouci"];
     
     for (int i = 0; i < KImageCount; i++) {
-        CGFloat imageViewX = KScrollViewSize.width * i;
+        CGFloat imageViewX = JDefaultScreenSize.width * i;
         
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewX, 0, KScrollViewSize.width, KScrollViewSize.height)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewX, 0, JDefaultScreenSize.width, JDefaultScreenSize.height)];
         
         imageView.image = [UIImage imageNamed:arrays[i]];
         
         [self.scrollView addSubview:imageView];
     }
     
-    CGFloat imageViewW = KImageCount * KScrollViewSize.width;
+    CGFloat imageViewW = KImageCount * JDefaultScreenWidth;
     
     self.scrollView.contentSize = CGSizeMake(imageViewW, 0);
     
@@ -67,6 +63,13 @@
     self.scrollView.showsVerticalScrollIndicator = YES;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.delegate = self;
+    
+    [self.view addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.equalTo(self.view);
+        make.top.equalTo(self.scrollView.mas_bottom);
+        make.bottom.equalTo(self.view.mas_bottom).offset(-49);
+    }];
 }
 //加载页码
 - (void)loadPageControl {
@@ -78,9 +81,7 @@
 
 - (void)loadTimer {
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(pageChanged:) userInfo:nil repeats:YES];
-    
     NSRunLoop *mainLoop = [NSRunLoop mainRunLoop];
-    
     [mainLoop addTimer:self.timer forMode:NSRunLoopCommonModes];
 }
 
@@ -89,28 +90,21 @@
     
     CGPoint offset = self.scrollView.contentOffset;
     
-    if (offset.x >= KScrollViewSize.width * (KImageCount - 1)) {
-        
+    if (offset.x >= JDefaultScreenWidth * (KImageCount - 1)) {
         currentPage = 0;
-        
         offset.x = 0;
-//        [self loadTimer];
-        NSLog(@"重新加载了么？");
     }else {
         currentPage ++;
-        
-        offset.x += KScrollViewSize.width;
+        offset.x += JDefaultScreenWidth;
     }
-    
     self.pageControl.currentPage = currentPage;
-    
     [self.scrollView setContentOffset:offset animated:NO];
 }
 
 //根据偏移量获取当前页码
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     CGPoint offset = scrollView.contentOffset;
-    NSInteger currentPage = offset.x / KScrollViewSize.width;
+    NSInteger currentPage = offset.x / JDefaultScreenWidth;
     self.pageControl.currentPage = currentPage;
 }
 
@@ -128,8 +122,7 @@
     _infos = [NSMutableArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForAuxiliaryExecutable:@"place.plist"]];
     
     if(!_tableView){
-        _tableView = [[UITableView alloc]initWithFrame:
-                      CGRectMake(0, 75 + 255, 375, 667-75-49) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] init];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         UINib *nib = [UINib nibWithNibName:@"MyCells" bundle:nil];//从当前工程中，载入xib文件
